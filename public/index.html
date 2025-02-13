@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Swipe Rate Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .dashboard {
+        display: flex;
+        border: 1px solid #ccc;
+        padding: 10px;
+        align-items: center;
+      }
+      .left-section {
+        width: 30%;
+        border-right: 1px solid #ccc;
+        padding-right: 10px;
+      }
+      .right-section {
+        flex-grow: 1;
+        padding-left: 10px;
+      }
+      .info-box {
+        background-color: #f5f5f5;
+        margin-bottom: 8px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .table-box {
+        margin-top: 8px;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      .table-box th, .table-box td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+      .chart-container {
+        margin-top: 16px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Swipe rate</h2>
+    <div class="dashboard">
+      <!-- 좌측 정보영역 -->
+      <div class="left-section">
+        <div class="info-box">
+          <strong>Total Bill</strong>
+          <div style="font-size: 24px; font-weight: bold;">20,236</div>
+        </div>
+        <div class="info-box">
+          <strong>Member Bill</strong>
+          <div style="font-size: 24px; font-weight: bold;">15,701</div>
+        </div>
+      </div>
+
+      <!-- 우측 테이블 + 차트 -->
+      <div class="right-section">
+        <!-- Swipe Rate Summary -->
+        <table class="table-box">
+          <thead>
+            <tr>
+              <th>Swipe rate(Member bill / Total bill)</th>
+              <th>77.6%</th>
+              <th>+1.2%P</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Normal</td>
+              <td>71.8%</td>
+              <td>+1.9%P</td>
+            </tr>
+            <tr>
+              <td>Gold</td>
+              <td>3.3%</td>
+              <td>-1.0%P</td>
+            </tr>
+            <tr>
+              <td>Platinum</td>
+              <td>2.5%</td>
+              <td>-0.4%P</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 차트 영역 -->
+        <div class="chart-container">
+          <canvas id="swipeRateChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const ctx = document.getElementById('swipeRateChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['전체 매장 2024', '전체 매장 2023', '해당 매장 2024', '해당 매장 2023'],
+          datasets: [
+            {
+              label: 'Swipe Rate',
+              data: [76.4, 68.6, 77.6, 71.2],
+              backgroundColor: [
+                '#d3d3d3', // 전체 매장 2024
+                '#bfbfbf', // 전체 매장 2023
+                '#ff7f50', // 해당 매장 2024 (주황 강조)
+                '#ffd4a3', // 해당 매장 2023 (연주황)
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          indexAxis: 'y', // 수평 바 차트
+          responsive: true,
+          plugins: {
+            legend: { display: false }, // 범례 제거
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                callback: (value) => `${value}%`,
+              },
+            },
+            y: {
+              ticks: {
+                font: { size: 12 },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
