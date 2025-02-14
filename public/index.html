@@ -2,14 +2,17 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8"/>
-    <title>Swipe Rate Dashboard</title>
+    <title>outback report</title>
+    <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
 
+    <!-- style sheet -->
     <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-<div class="cover-page">
+<div class="cover-page one-page">
     <div class="cover-page-inner">
         <h1 class="cover-page-title">
             Store Fact Sheet
@@ -20,7 +23,6 @@
         </div>
     </div>
 </div>
-<div class="page-break"></div><!-- 페이지 분리 -->
 <div class="one-page">
     <!-- 머릿말 -->
     <div class="page-top-section">
@@ -30,7 +32,7 @@
         </div>
     </div>
     <h2>Swipe rate</h2>
-    <div class="dashboard swiper-rate">
+    <div class="dashboard section1">
         <!-- 좌측 정보영역 -->
         <div class="left-section">
             <div class="info-box">
@@ -42,14 +44,19 @@
                 <div style="font-size: 24px; font-weight: bold;">15,701</div>
             </div>
         </div>
-
-        <!-- 우측 테이블 + 차트 -->
-        <div class="right-section">
+        <div class="center-section">
             <!-- Swipe Rate Summary -->
             <table class="table-box">
+                <colgroup>
+                    <col style="">
+                    <col style="width: 80px">
+                    <col style="width: 80px">
+                </colgroup>
                 <thead>
                 <tr>
-                    <th>Swipe rate(Member bill / Total bill)</th>
+                    <th>Swipe rate<br>
+                        (Member bill / Total bill)
+                    </th>
                     <th>77.6%</th>
                     <th>+1.2%P</th>
                 </tr>
@@ -72,16 +79,17 @@
                 </tr>
                 </tbody>
             </table>
-
+        </div>
+        <!-- 우측 테이블 + 차트 -->
+        <div class="right-section">
             <!-- 차트 영역 -->
             <div class="chart-container">
                 <canvas id="swipeRateChart"></canvas>
             </div>
         </div>
     </div>
-
     <h2>구매회원 Profile</h2>
-    <div class="dashboard">
+    <div class="dashboard section2">
         <!-- 좌측 성별 비율 차트 -->
         <div class="left-section">
             <div class="chart-container">
@@ -92,6 +100,11 @@
         <!-- 우측 연령대 차트 및 표 -->
         <div class="right-section">
             <table class="table-box">
+                <colgroup>
+                    <col style="width: 33.33%">
+                    <col style="width: 33.33%">
+                    <col style="width: 33.33%">
+                </colgroup>
                 <thead>
                 <tr>
                     <th>전체 매장</th>
@@ -107,532 +120,545 @@
                 </tr>
                 </tbody>
             </table>
-            <canvas id="ageChart"></canvas>
-        </div>
-    </div>
-</div>
-<div class="page-break"></div><!-- 페이지 분리 -->
-<h2>New, Existing and VIP member Sales Portion</h2>
-<div class="dashboard">
-    <!-- 좌측 테이블 -->
-    <div class="left-section">
-        <table class="table-box">
-            <thead>
-            <tr>
-                <th colspan="3">2024</th>
-                <th>2023</th>
-            </tr>
-            <tr>
-                <th>전체 매장</th>
-                <th>해당 매장</th>
-                <th>비중 차이</th>
-                <th>해당 매장</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1.3%</td>
-                <td>1.5%</td>
-                <td>+0.3%P</td>
-                <td>1.5%</td>
-            </tr>
-            <tr>
-                <td>2.5%</td>
-                <td>2.6%</td>
-                <td>+0.1%P</td>
-                <td>3.1%</td>
-            </tr>
-            <tr>
-                <td>65.4%</td>
-                <td>58.4%</td>
-                <td>-7.0%P</td>
-                <td>80.1%</td>
-            </tr>
-            <tr>
-                <td>30.8%</td>
-                <td>25.1%</td>
-                <td>-5.8%P</td>
-                <td>15.3%</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- 우측 차트 -->
-    <div class="dashboard sales-portion-section">
-        <!-- 차트 2개를 가로로 나란히 -->
-        <div class="chart-pair">
-            <div class="chart-container">
-                <canvas id="salesPortionChart2024"></canvas>
-            </div>
-            <div class="chart-container">
-                <canvas id="salesPortionChart2023"></canvas>
+            <div class="chart-container" style="
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;">
+                <canvas id="ageChart"></canvas>
             </div>
         </div>
     </div>
-</div>
+    <h2>New, Existing and VIP member Sales Portion</h2>
+    <div class="dashboard section3">
+        <!-- 좌측 테이블 -->
+        <div class="left-section">
+            <table class="table-box">
+                <thead>
+                <tr>
+                    <th colspan="3">2024</th>
+                    <th>2023</th>
+                </tr>
+                <tr>
+                    <th>전체 매장</th>
+                    <th>해당 매장</th>
+                    <th>비중 차이</th>
+                    <th>해당 매장</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1.3%</td>
+                    <td>1.5%</td>
+                    <td>+0.3%P</td>
+                    <td>1.5%</td>
+                </tr>
+                <tr>
+                    <td>2.5%</td>
+                    <td>2.6%</td>
+                    <td>+0.1%P</td>
+                    <td>3.1%</td>
+                </tr>
+                <tr>
+                    <td>65.4%</td>
+                    <td>58.4%</td>
+                    <td>-7.0%P</td>
+                    <td>80.1%</td>
+                </tr>
+                <tr>
+                    <td>30.8%</td>
+                    <td>25.1%</td>
+                    <td>-5.8%P</td>
+                    <td>15.3%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-
-<h2>Visit Member & Frequency</h2>
-<div class="dashboard visit-section">
-    <!-- 차트 영역 -->
-    <div class="left-section">
-        <div class="chart-pair">
-            <div class="chart-container">
-                <canvas id="visitChart2024"></canvas>
-            </div>
-            <div class="chart-container">
-                <canvas id="visitChart2023"></canvas>
+        <!-- 우측 차트 -->
+        <div class="dashboard sales-portion-section">
+            <!-- 차트 2개를 가로로 나란히 -->
+            <div class="chart-pair">
+                <div class="chart-container">
+                    <canvas id="salesPortionChart2024All"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="salesPortionChart2024Store"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="salesPortionChart2023Store"></canvas>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- 테이블 영역 -->
-    <div class="right-section">
-        <table class="table-box">
-            <thead>
-            <tr>
-                <th>전체매장</th>
-                <th>2024 방문 빈도</th>
-                <th>2023 방문 빈도</th>
-                <th>VS 전체</th>
-                <th>VS 전년</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Pla.</td>
-                <td>3.79</td>
-                <td>2.12</td>
-                <td>2.44</td>
-                <td style="color:blue;">▼1.67</td>
-                <td style="color:blue;">▼0.33</td>
-            </tr>
-            <tr>
-                <td>Gold</td>
-                <td>2.33</td>
-                <td>1.64</td>
-                <td>1.83</td>
-                <td style="color:blue;">▼0.69</td>
-                <td style="color:blue;">▼0.19</td>
-            </tr>
-            <tr>
-                <td>Silver</td>
-                <td>1.25</td>
-                <td>1.13</td>
-                <td>1.10</td>
-                <td style="color:blue;">▼0.12</td>
-                <td style="color:red;">▲0.03</td>
-            </tr>
-            <tr>
-                <td>Wel.</td>
-                <td>1.10</td>
-                <td>1.05</td>
-                <td>1.33</td>
-                <td style="color:blue;">▼0.05</td>
-                <td style="color:blue;">▼0.05</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
-
-
-<div class="page-break"></div><!-- 페이지 분리 -->
-<h2>Steak analysis</h2>
-<p>* 프리미엄 스테이크 기준: Porterhouse, TMHK, BLPS<br/>
-    * 경험률: 매장 방문 회원 중 해당 스테이크 카테고리를 구매한 회원의 비중</p>
-
-<div class="dashboard steak-section">
-    <!-- 좌측 차트 -->
-    <div class="left-section">
-        <div class="chart-pair">
-            <div class="chart-container">
-                <canvas id="steakChart2024"></canvas>
+<div class="one-page">
+    <!-- 머릿말 -->
+    <div class="page-top-section">
+        <p class="page-top-title">Outback Store Fact Sheet</p>
+        <div class="page-top-box">
+            <p class="page-top-box-title">Date : 2024.01.01 ~ 2024.06.30 (6 Months)</p>
+        </div>
+    </div>
+    <h2>Visit Member & Frequency</h2>
+    <div class="dashboard visit-section">
+        <!-- 차트 영역 -->
+        <div class="left-section">
+            <div class="chart-pair">
+                <div class="chart-container">
+                    <canvas id="visitChart2024"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="visitChart2023"></canvas>
+                </div>
             </div>
-            <div class="chart-container">
-                <canvas id="steakChart2023"></canvas>
-            </div>
+        </div>
+
+        <!-- 테이블 영역 -->
+        <div class="right-section">
+            <table class="table-box">
+                <thead>
+                <tr>
+                    <th>전체매장</th>
+                    <th>2024 방문 빈도</th>
+                    <th>2023 방문 빈도</th>
+                    <th>VS 전체</th>
+                    <th>VS 전년</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Pla.</td>
+                    <td>3.79</td>
+                    <td>2.12</td>
+                    <td>2.44</td>
+                    <td style="color:blue;">▼1.67</td>
+                    <td style="color:blue;">▼0.33</td>
+                </tr>
+                <tr>
+                    <td>Gold</td>
+                    <td>2.33</td>
+                    <td>1.64</td>
+                    <td>1.83</td>
+                    <td style="color:blue;">▼0.69</td>
+                    <td style="color:blue;">▼0.19</td>
+                </tr>
+                <tr>
+                    <td>Silver</td>
+                    <td>1.25</td>
+                    <td>1.13</td>
+                    <td>1.10</td>
+                    <td style="color:blue;">▼0.12</td>
+                    <td style="color:red;">▲0.03</td>
+                </tr>
+                <tr>
+                    <td>Wel.</td>
+                    <td>1.10</td>
+                    <td>1.05</td>
+                    <td>1.33</td>
+                    <td style="color:blue;">▼0.05</td>
+                    <td style="color:blue;">▼0.05</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <!-- 우측 테이블 -->
-    <div class="right-section">
-        <table class="table-box">
-            <thead>
-            <tr>
-                <th colspan="2">전체 매장</th>
-                <th colspan="2">해당 매장</th>
-                <th colspan="2">해당 매장</th>
-            </tr>
-            <tr>
-                <th>2024 회원</th>
-                <th>2024 비회원</th>
-                <th>2024 회원</th>
-                <th>2024 비회원</th>
-                <th>2023 회원</th>
-                <th>2023 비회원</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>85.0%</td>
-                <td>23.3%</td>
-                <td>66.0%</td>
-                <td>17.0%</td>
-                <td>35.1%</td>
-                <td>10.8%</td>
-            </tr>
-            <tr>
-                <td>27.5%</td>
-                <td>11.2%</td>
-                <td>23.3%</td>
-                <td>8.6%</td>
-                <td>3.2%</td>
-                <td>1.6%</td>
-            </tr>
-            <tr>
-                <td>7.5%</td>
-                <td>1.5%</td>
-                <td>5.9%</td>
-                <td>1.0%</td>
-                <td>0.8%</td>
-                <td>0.7%</td>
-            </tr>
-            <tr>
-                <td>18.6%</td>
-                <td>3.1%</td>
-                <td>14.2%</td>
-                <td>2.1%</td>
-                <td>13.7%</td>
-                <td>4.5%</td>
-            </tr>
-            </tbody>
-        </table>
+    <h2>Steak analysis</h2>
+    <p>* 프리미엄 스테이크 기준: Porterhouse, TMHK, BLPS<br/>
+        * 경험률: 매장 방문 회원 중 해당 스테이크 카테고리를 구매한 회원의 비중</p>
+
+    <div class="dashboard steak-section">
+        <!-- 좌측 차트 -->
+        <div class="left-section">
+            <div class="chart-pair">
+                <div class="chart-container">
+                    <canvas id="steakChart2024"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="steakChart2023"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- 우측 테이블 -->
+        <div class="right-section">
+            <table class="table-box">
+                <thead>
+                <tr>
+                    <th colspan="2">전체 매장</th>
+                    <th colspan="2">해당 매장</th>
+                    <th colspan="2">해당 매장</th>
+                </tr>
+                <tr>
+                    <th>2024 회원</th>
+                    <th>2024 비회원</th>
+                    <th>2024 회원</th>
+                    <th>2024 비회원</th>
+                    <th>2023 회원</th>
+                    <th>2023 비회원</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>85.0%</td>
+                    <td>23.3%</td>
+                    <td>66.0%</td>
+                    <td>17.0%</td>
+                    <td>35.1%</td>
+                    <td>10.8%</td>
+                </tr>
+                <tr>
+                    <td>27.5%</td>
+                    <td>11.2%</td>
+                    <td>23.3%</td>
+                    <td>8.6%</td>
+                    <td>3.2%</td>
+                    <td>1.6%</td>
+                </tr>
+                <tr>
+                    <td>7.5%</td>
+                    <td>1.5%</td>
+                    <td>5.9%</td>
+                    <td>1.0%</td>
+                    <td>0.8%</td>
+                    <td>0.7%</td>
+                </tr>
+                <tr>
+                    <td>18.6%</td>
+                    <td>3.1%</td>
+                    <td>14.2%</td>
+                    <td>2.1%</td>
+                    <td>13.7%</td>
+                    <td>4.5%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3>회원 등급별 프리미엄 스테이크 경험률</h3>
+    <p>회원 등급별 프리미엄 스테이크 카테고리 경험률</p>
+    <div class="dashboard steak-grade-section">
+        <div class="full-width">
+            <!-- 2024 테이블 -->
+            <h4>2024</h4>
+            <table class="table-box">
+                <thead>
+                <tr>
+                    <th colspan="2">전체 매장</th>
+                    <th colspan="4">해당 매장</th>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <th>vs LY</th>
+                    <th>Total</th>
+                    <th>Pla.</th>
+                    <th>Gold</th>
+                    <th>Silver</th>
+                    <th>Wel.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>27.5%</td>
+                    <td>+19.3%P</td>
+                    <td>23.3%</td>
+                    <td>0.9%</td>
+                    <td>1.0%</td>
+                    <td>15.3%</td>
+                    <td>6.0%</td>
+                </tr>
+                <tr>
+                    <td>7.5%</td>
+                    <td>+1.0%P</td>
+                    <td>5.9%</td>
+                    <td>0.1%</td>
+                    <td>0.2%</td>
+                    <td>3.2%</td>
+                    <td>2.4%</td>
+                </tr>
+                <tr>
+                    <td>18.6%</td>
+                    <td>-20.9%P</td>
+                    <td>14.2%</td>
+                    <td>0.3%</td>
+                    <td>0.4%</td>
+                    <td>7.4%</td>
+                    <td>6.1%</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- 2023 테이블 -->
+            <h4>2023</h4>
+            <table class="table-box">
+                <thead>
+                <tr>
+                    <th colspan="2">전체 매장</th>
+                    <th colspan="4">해당 매장</th>
+                </tr>
+                <tr>
+                    <th>Total</th>
+                    <th>vs LY</th>
+                    <th>Total</th>
+                    <th>Pla.</th>
+                    <th>Gold</th>
+                    <th>Silver</th>
+                    <th>Wel.</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>8.2%</td>
+                    <td>0%P</td>
+                    <td>3.2%</td>
+                    <td>0.1%</td>
+                    <td>0.3%</td>
+                    <td>2.6%</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>6.5%</td>
+                    <td>0%P</td>
+                    <td>2.0%</td>
+                    <td>0.1%</td>
+                    <td>0.2%</td>
+                    <td>1.8%</td>
+                    <td>0.0%</td>
+                </tr>
+                <tr>
+                    <td>39.5%</td>
+                    <td>0%P</td>
+                    <td>13.7%</td>
+                    <td>0.4%</td>
+                    <td>0.2%</td>
+                    <td>12.5%</td>
+                    <td>0.6%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
-<h3>회원 등급별 프리미엄 스테이크 경험률</h3>
-<p>회원 등급별 프리미엄 스테이크 카테고리 경험률</p>
+<div class="one-page">
+    <h3>시도 기준 방문 영수증 건</h3>
+    <div class="dashboard receipt-section">
+        <!-- 1분기 -->
+        <div class="left-section">
+            <h4>시도 기준 방문 영수증 건 (1분기)</h4>
+            <table class="table-box">
+                <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>1분기</th>
+                    <th>비중</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>강원도</td>
+                    <td>17</td>
+                    <td>0.4%</td>
+                </tr>
+                <tr>
+                    <td>경기도</td>
+                    <td>605</td>
+                    <td>13.7%</td>
+                </tr>
+                <tr>
+                    <td>경상남도</td>
+                    <td>9</td>
+                    <td>0.2%</td>
+                </tr>
+                <tr>
+                    <td>경상북도</td>
+                    <td>3</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>광주</td>
+                    <td>8</td>
+                    <td>0.2%</td>
+                </tr>
+                <tr>
+                    <td>대구</td>
+                    <td>7</td>
+                    <td>0.2%</td>
+                </tr>
+                <tr>
+                    <td>대전</td>
+                    <td>7</td>
+                    <td>0.2%</td>
+                </tr>
+                <tr>
+                    <td>서울</td>
+                    <td>3671</td>
+                    <td>83.1%</td>
+                </tr>
+                <tr>
+                    <td>세종</td>
+                    <td>3</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>울산</td>
+                    <td>6</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>인천</td>
+                    <td>29</td>
+                    <td>0.7%</td>
+                </tr>
+                <tr>
+                    <td>전라남도</td>
+                    <td>5</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>전라북도</td>
+                    <td>4</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>제주도</td>
+                    <td>0</td>
+                    <td>0.0%</td>
+                </tr>
+                <tr>
+                    <td>충청남도</td>
+                    <td>12</td>
+                    <td>0.3%</td>
+                </tr>
+                <tr>
+                    <td>충청북도</td>
+                    <td>7</td>
+                    <td>0.2%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-<div class="dashboard steak-grade-section">
-    <div class="full-width">
-        <!-- 2024 테이블 -->
-        <h4>2024</h4>
-        <table class="table-box">
-            <thead>
-            <tr>
-                <th colspan="2">전체 매장</th>
-                <th colspan="4">해당 매장</th>
-            </tr>
-            <tr>
-                <th>Total</th>
-                <th>vs LY</th>
-                <th>Total</th>
-                <th>Pla.</th>
-                <th>Gold</th>
-                <th>Silver</th>
-                <th>Wel.</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>27.5%</td>
-                <td>+19.3%P</td>
-                <td>23.3%</td>
-                <td>0.9%</td>
-                <td>1.0%</td>
-                <td>15.3%</td>
-                <td>6.0%</td>
-            </tr>
-            <tr>
-                <td>7.5%</td>
-                <td>+1.0%P</td>
-                <td>5.9%</td>
-                <td>0.1%</td>
-                <td>0.2%</td>
-                <td>3.2%</td>
-                <td>2.4%</td>
-            </tr>
-            <tr>
-                <td>18.6%</td>
-                <td>-20.9%P</td>
-                <td>14.2%</td>
-                <td>0.3%</td>
-                <td>0.4%</td>
-                <td>7.4%</td>
-                <td>6.1%</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <!-- 2023 테이블 -->
-        <h4>2023</h4>
-        <table class="table-box">
-            <thead>
-            <tr>
-                <th colspan="2">전체 매장</th>
-                <th colspan="4">해당 매장</th>
-            </tr>
-            <tr>
-                <th>Total</th>
-                <th>vs LY</th>
-                <th>Total</th>
-                <th>Pla.</th>
-                <th>Gold</th>
-                <th>Silver</th>
-                <th>Wel.</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>8.2%</td>
-                <td>0%P</td>
-                <td>3.2%</td>
-                <td>0.1%</td>
-                <td>0.3%</td>
-                <td>2.6%</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>6.5%</td>
-                <td>0%P</td>
-                <td>2.0%</td>
-                <td>0.1%</td>
-                <td>0.2%</td>
-                <td>1.8%</td>
-                <td>0.0%</td>
-            </tr>
-            <tr>
-                <td>39.5%</td>
-                <td>0%P</td>
-                <td>13.7%</td>
-                <td>0.4%</td>
-                <td>0.2%</td>
-                <td>12.5%</td>
-                <td>0.6%</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="page-break"></div><!-- 페이지 분리 -->
-
-<h3>시도 기준 방문 영수증 건</h3>
-<div class="dashboard receipt-section">
-    <!-- 1분기 -->
-    <div class="left-section">
-        <h4>시도 기준 방문 영수증 건 (1분기)</h4>
-        <table class="table-box">
-            <thead>
-            <tr>
-                <th>구분</th>
-                <th>1분기</th>
-                <th>비중</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>강원도</td>
-                <td>17</td>
-                <td>0.4%</td>
-            </tr>
-            <tr>
-                <td>경기도</td>
-                <td>605</td>
-                <td>13.7%</td>
-            </tr>
-            <tr>
-                <td>경상남도</td>
-                <td>9</td>
-                <td>0.2%</td>
-            </tr>
-            <tr>
-                <td>경상북도</td>
-                <td>3</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>광주</td>
-                <td>8</td>
-                <td>0.2%</td>
-            </tr>
-            <tr>
-                <td>대구</td>
-                <td>7</td>
-                <td>0.2%</td>
-            </tr>
-            <tr>
-                <td>대전</td>
-                <td>7</td>
-                <td>0.2%</td>
-            </tr>
-            <tr>
-                <td>서울</td>
-                <td>3671</td>
-                <td>83.1%</td>
-            </tr>
-            <tr>
-                <td>세종</td>
-                <td>3</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>울산</td>
-                <td>6</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>인천</td>
-                <td>29</td>
-                <td>0.7%</td>
-            </tr>
-            <tr>
-                <td>전라남도</td>
-                <td>5</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>전라북도</td>
-                <td>4</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>제주도</td>
-                <td>0</td>
-                <td>0.0%</td>
-            </tr>
-            <tr>
-                <td>충청남도</td>
-                <td>12</td>
-                <td>0.3%</td>
-            </tr>
-            <tr>
-                <td>충청북도</td>
-                <td>7</td>
-                <td>0.2%</td>
-            </tr>
-            </tbody>
-        </table>
+        <!-- 2분기 -->
+        <div class="right-section">
+            <h4>시도 기준 방문 영수증 건 (2분기)</h4>
+            <table class="table-box">
+                <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>2분기</th>
+                    <th>비중</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>강원도</td>
+                    <td>18</td>
+                    <td>0.5%</td>
+                </tr>
+                <tr>
+                    <td>경기도</td>
+                    <td>485</td>
+                    <td>14.5%</td>
+                </tr>
+                <tr>
+                    <td>경상남도</td>
+                    <td>6</td>
+                    <td>0.2%</td>
+                </tr>
+                <tr>
+                    <td>경상북도</td>
+                    <td>3</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>광주</td>
+                    <td>8</td>
+                    <td>0.2%</td>
+                </tr>
+                <tr>
+                    <td>대구</td>
+                    <td>8</td>
+                    <td>0.2%</td>
+                </tr>
+                <tr>
+                    <td>대전</td>
+                    <td>11</td>
+                    <td>0.3%</td>
+                </tr>
+                <tr>
+                    <td>서울</td>
+                    <td>2740</td>
+                    <td>81.7%</td>
+                </tr>
+                <tr>
+                    <td>세종</td>
+                    <td>2</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>울산</td>
+                    <td>1</td>
+                    <td>0.0%</td>
+                </tr>
+                <tr>
+                    <td>인천</td>
+                    <td>27</td>
+                    <td>0.8%</td>
+                </tr>
+                <tr>
+                    <td>전라남도</td>
+                    <td>4</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>전라북도</td>
+                    <td>3</td>
+                    <td>0.1%</td>
+                </tr>
+                <tr>
+                    <td>제주도</td>
+                    <td>0</td>
+                    <td>0.0%</td>
+                </tr>
+                <tr>
+                    <td>충청남도</td>
+                    <td>6</td>
+                    <td>0.2%</td>
+                </tr>
+                <tr>
+                    <td>충청북도</td>
+                    <td>6</td>
+                    <td>0.2%</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-    <!-- 2분기 -->
-    <div class="right-section">
-        <h4>시도 기준 방문 영수증 건 (2분기)</h4>
-        <table class="table-box">
-            <thead>
-            <tr>
-                <th>구분</th>
-                <th>2분기</th>
-                <th>비중</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>강원도</td>
-                <td>18</td>
-                <td>0.5%</td>
-            </tr>
-            <tr>
-                <td>경기도</td>
-                <td>485</td>
-                <td>14.5%</td>
-            </tr>
-            <tr>
-                <td>경상남도</td>
-                <td>6</td>
-                <td>0.2%</td>
-            </tr>
-            <tr>
-                <td>경상북도</td>
-                <td>3</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>광주</td>
-                <td>8</td>
-                <td>0.2%</td>
-            </tr>
-            <tr>
-                <td>대구</td>
-                <td>8</td>
-                <td>0.2%</td>
-            </tr>
-            <tr>
-                <td>대전</td>
-                <td>11</td>
-                <td>0.3%</td>
-            </tr>
-            <tr>
-                <td>서울</td>
-                <td>2740</td>
-                <td>81.7%</td>
-            </tr>
-            <tr>
-                <td>세종</td>
-                <td>2</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>울산</td>
-                <td>1</td>
-                <td>0.0%</td>
-            </tr>
-            <tr>
-                <td>인천</td>
-                <td>27</td>
-                <td>0.8%</td>
-            </tr>
-            <tr>
-                <td>전라남도</td>
-                <td>4</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>전라북도</td>
-                <td>3</td>
-                <td>0.1%</td>
-            </tr>
-            <tr>
-                <td>제주도</td>
-                <td>0</td>
-                <td>0.0%</td>
-            </tr>
-            <tr>
-                <td>충청남도</td>
-                <td>6</td>
-                <td>0.2%</td>
-            </tr>
-            <tr>
-                <td>충청북도</td>
-                <td>6</td>
-                <td>0.2%</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+    <h3>구군 기준 방문 영수증 건</h3>
+    <div class="dashboard receipt-section">
+        <!-- 1분기 -->
+        <div class="left-section">
+            <h4>구군 기준 방문 영수증 건 (1분기)</h4>
+            <!-- 구군 1분기 테이블 내용 (생략 가능, 위와 같은 형식으로 추가) -->
+        </div>
 
-<h3>구군 기준 방문 영수증 건</h3>
-<div class="dashboard receipt-section">
-    <!-- 1분기 -->
-    <div class="left-section">
-        <h4>구군 기준 방문 영수증 건 (1분기)</h4>
-        <!-- 구군 1분기 테이블 내용 (생략 가능, 위와 같은 형식으로 추가) -->
+        <!-- 2분기 -->
+        <div class="right-section">
+            <h4>구군 기준 방문 영수증 건 (2분기)</h4>
+            <!-- 구군 2분기 테이블 내용 (생략 가능, 위와 같은 형식으로 추가) -->
+        </div>
     </div>
 
-    <!-- 2분기 -->
-    <div class="right-section">
-        <h4>구군 기준 방문 영수증 건 (2분기)</h4>
-        <!-- 구군 2분기 테이블 내용 (생략 가능, 위와 같은 형식으로 추가) -->
-    </div>
 </div>
 
 <script src="js/script.js"></script>
-<script src="js/chartScript.js"></script>
-<script src="js/profileChartScript.js"></script>
-<script src="js/salesPortionChartScript.js"></script>
-<script src="js/visitChartScript.js"></script>
-<script src="js/steakChartScript.js"></script>
+<script src="js/section1.js"></script>
+<script src="js/section2.js"></script>
+<script src="js/section3.js"></script>
+<script src="js/section4.js"></script>
+<script src="js/section5.js"></script>
 </body>
 </html>

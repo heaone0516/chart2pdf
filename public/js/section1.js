@@ -1,4 +1,11 @@
+// 플러그인 등록 (Chart.js 4.x 기준)
+Chart.register(
+    ChartDataLabels,
+    window['chartjs-plugin-annotation']
+);
+
 const ctx = document.getElementById('swipeRateChart').getContext('2d');
+
 new Chart(ctx, {
     type: 'bar',
     data: {
@@ -20,22 +27,36 @@ new Chart(ctx, {
     options: {
         indexAxis: 'y', // 수평 바 차트
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
-            legend: {display: false}, // 범례 제거
+            legend: {display: false},
+            datalabels: {
+                anchor: 'center',
+                align: 'center',
+                color: '#000',
+                formatter: (value) => `${value.toFixed(1)}%`,
+                font: {size: 12},
+            },
+            annotation: {
+                annotations: {
+                    // 여기에 필요하다면 라인, 상자, 텍스트 같은 주석 넣을 수 있음
+                }
+            }
         },
         scales: {
             x: {
-                beginAtZero: true,
-                max: 100,
                 ticks: {
-                    callback: (value) => `${value}%`,
+                    display: false, // 퍼센트 숫자
+                },
+                grid: {
+                    display: false, // 눈금선 표시 여부
                 },
             },
             y: {
-                ticks: {
-                    font: {size: 12},
+                grid: {
+                    display: false, // 눈금선 표시 여부
                 },
-            },
-        },
+            }
+        }
     },
 });
