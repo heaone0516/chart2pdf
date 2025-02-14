@@ -7,6 +7,7 @@
     --secondary-color: #001f3f; /* 서브 컬러 */
     --font-color: #222;
     --bg-color: #fafafa; /* 배경 컬러 */
+    --main-belt-height: 30px;
 }
 
 * {
@@ -22,7 +23,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--font-color);
-    font-size: 15px;
+    font-size: 12px;
 }
 
 canvas {
@@ -50,25 +51,25 @@ canvas {
     flex-direction: column;
     align-items: flex-end;
     width: 100%;
-    border-top: 35px solid var(--primary-color);
-    border-bottom: 35px solid var(--primary-color);
-    padding: 100px 0;
+    border-top: 25px solid var(--primary-color);
+    border-bottom: 25px solid var(--primary-color);
+    padding: 200px 0;
 }
 
 .cover-page-title {
     text-align: right;
     color: var(--primary-color);
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 45px;
+        font-weight: normal;
 }
 
 .cover-page-branch {
     display: flex;
     width: 300px;
-    height: 50px;
-    margin-top: 100px;
+    height: 45px;
+    margin-top: 70px;
     border: 1px solid gray;
-    font-size: 22px;
+    font-size: 16px;
 }
 
 .cover-page-branch-number {
@@ -87,6 +88,10 @@ canvas {
     justify-content: center;
     flex: 1;
     height: 100%;
+    color: var(--primary-color);
+}
+.cover-page-date {
+    margin-top: 45px;
 }
 
 .page-top-section {
@@ -95,8 +100,7 @@ canvas {
 
 .page-top-title {
     color: var(--primary-color);
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 25px;
 }
 
 .page-top-box {
@@ -104,17 +108,31 @@ canvas {
     align-items: center;
     justify-content: flex-end;
     width: 100%;
-    height: 50px;
+    height: var(--main-belt-height);
     background-color: var(--primary-color);
-    margin-top: 10px;
-    padding: 0 20px;
+    margin-top: 6px;
+    padding: 0 15px;
     color: #fff;
-    font-size: 25px;
+    font-size: 16px;
+}
+.page-bottom-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: var(--main-belt-height);
+    background-color: var(--primary-color);
+    padding: 0 15px;
+    color: #fff;
 }
 
 .one-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
     height: 1123px; /* A4 높이 */
+    padding: 30px;
     border-bottom: 1px solid #000;
 }
 
@@ -125,7 +143,6 @@ canvas {
     border: 1px solid #ddd;
     padding: 10px;
     width: 100%;
-    min-height: 200px;
     margin-bottom: 20px; /* 섹션 간격 추가 */
 }
 
@@ -211,16 +228,6 @@ canvas {
     height: 400px; /* 필요하면 높이 설정 */
 }
 
-.visit-section .chart-pair {
-    display: flex;
-    gap: 20px;
-}
-
-.visit-section .chart-container {
-    width: 200px;
-    height: 300px;
-}
-
 .steak-grade-section h4 {
     margin-top: 12px;
     margin-bottom: 8px;
@@ -234,25 +241,11 @@ canvas {
     margin-bottom: 16px;
 }
 
-.receipt-section {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
-
-.receipt-section .left-section,
-.receipt-section .right-section {
-    flex: 1;
-}
-
-.receipt-section h4 {
-    margin-bottom: 8px;
-}
-
 /* swiper-rate */
 .section1 .left-section {
     width: 160px;
 }
+
 .section1 .center-section {
     width: 280px;
 }
@@ -269,15 +262,100 @@ canvas {
     flex: 1;
 }
 
+.section1 .right-section .chart-container {
+    height: 150px;
+}
+
 /* 구매회원 */
 .section2 .left-section {
     width: 300px;
 }
+
+.section2 .left-section .chart-container {
+    height: 270px;
+}
+
 .section2 .table-box {
     margin-bottom: 20px;
 }
 
 /* New, Existing and VIP member Sales Portion */
+.section3 {
+    height: 300px;
+}
+
 .section3 .left-section {
+    width: 350px;
+}
+
+.section3 .chart-container {
+    height: 100%;
+}
+
+.section4 .left-section {
     width: 300px;
 }
+
+.section4 .chart-pair {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.section4 .chart-pair-section {
+    width: 45%;
+}
+
+.section4 .left-section .chart-container {
+    height: 150px;
+}
+
+
+.section5 .left-section {
+    width: 330px;
+}
+
+.section6 .table-box th,
+.section6 .table-box td {
+    padding: 4px;
+}
+
+.section7 {
+
+}
+.section7 {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.section7 .left-section,
+.section7 .right-section {
+    flex: 1;
+}
+
+.section7 h4 {
+    margin-bottom: 8px;
+}
+
+.section7 .table-box {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.section7 .table-box th, .table-box td {
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+
+.section7 .table-box td:first-child {
+    text-align: left;
+}
+
+.section7 .table-box td:nth-child(2),
+.section7 .table-box td:nth-child(3) {
+    text-align: right;
+}
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Swipe Rate Report</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+</head>
+<style>
+    .chart-container {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+</style>
+<body>
+<div class="one-page">
+
+    <h2>구매회원 Profile</h2>
+    <div class="dashboard customer-info">
+        <!-- 좌측 성별 비율 차트 -->
+        <div class="left-section">
+            <div class="chart-container">
+                <canvas id="genderChart"></canvas>
+            </div>
+        </div>
+        <!-- 우측 연령대 차트 및 표 -->
+        <div class="right-section">
+            <table class="table-box">
+                <thead>
+                <tr>
+                    <th>전체 매장</th>
+                    <th>해당 매장</th>
+                    <th>평균 연령 차이</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>38.3세</td>
+                    <td>38.8세</td>
+                    <td>+0.5세</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="chart-container" style="
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;">
+                <canvas id="ageChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="page1.js"></script>
+</body>
+</html>

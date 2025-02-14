@@ -12,19 +12,19 @@ new Chart(genderCtx, {
         labels: ['전체매장', '해당매장'],
         datasets: [
             {
-                label: '여',
-                data: [26.1, 27.8],
-                backgroundColor: '#f28b82',
-                borderColor: (ctx) =>
-                    ctx.chart.data.labels[ctx.dataIndex] === '해당매장' ? '#d32f2f' : '#f28b82', // 해당매장만 테두리 강조
-                borderWidth: (ctx) => (ctx.chart.data.labels[ctx.dataIndex] === '해당매장' ? 2 : 0),
-            },
-            {
                 label: '남',
                 data: [73.9, 72.2],
                 backgroundColor: '#80deea',
                 borderColor: (ctx) =>
                     ctx.chart.data.labels[ctx.dataIndex] === '해당매장' ? '#0097a7' : '#80deea',
+                borderWidth: (ctx) => (ctx.chart.data.labels[ctx.dataIndex] === '해당매장' ? 2 : 0),
+            },
+            {
+                label: '여',
+                data: [26.1, 27.8],
+                backgroundColor: '#f28b82',
+                borderColor: (ctx) =>
+                    ctx.chart.data.labels[ctx.dataIndex] === '해당매장' ? '#d32f2f' : '#f28b82', // 해당매장만 테두리 강조
                 borderWidth: (ctx) => (ctx.chart.data.labels[ctx.dataIndex] === '해당매장' ? 2 : 0),
             },
         ],
