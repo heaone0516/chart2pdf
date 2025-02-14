@@ -15,6 +15,7 @@ const chartConfig = (ctx, values, label) => {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false, //false: 높이 설정이 가능
       plugins: { legend: { position: 'top' } },
       scales: {
         x: { stacked: true },

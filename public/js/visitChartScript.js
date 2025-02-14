@@ -21,6 +21,7 @@ const createSteakChart = (ctx, year, memberData, nonMemberData) => {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false, //false: 높이 설정
       plugins: { legend: { position: 'top' } },
       scales: {
         x: { stacked: true },
